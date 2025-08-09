@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <title>Login - Demo CSS</title>
+  <link rel="stylesheet" href="estilo1.css" />
+  <style>
+    body {
+      background-color: #f0f8ff;
+    }
+    
+    #login {
+      max-width: 300px;
+      margin: 100px auto;
+      background: #fff;
+      padding: 20px;
+      border: 1px solid #b0c4de;
+      border-radius: 6px;
+      box-shadow: 0 4px 8px rgba(70, 130, 180, 0.1);
+    }
+    
+    h2 {
+      color: #1e90ff;
+      text-align: center;
+      margin-bottom: 20px;
+    }
+    
+    label {
+      display: block;
+      margin-top: 15px;
+      color: #4682b4;
+      font-weight: bold;
+    }
+    
+    input {
+      width: 100%;
+      padding: 10px;
+      margin-top: 5px;
+      box-sizing: border-box;
+      border: 1px solid #b0c4de;
+      border-radius: 4px;
+      background-color: #f8fbfe;
+    }
+    
+    input:focus {
+      outline: none;
+      border-color: #1e90ff;
+      box-shadow: 0 0 5px rgba(30, 144, 255, 0.5);
+    }
+    
+    button {
+      width: 100%;
+      padding: 12px;
+      margin-top: 20px;
+      background-color: #1e90ff;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      font-weight: bold;
+      transition: background-color 0.3s;
+    }
+    
+    button:hover {
+      background-color: #0066cc;
+    }
+    
+    #mensaje {
+      margin-top: 20px;
+      padding: 12px;
+      border-radius: 4px;
+      text-align: center;
+      font-weight: bold;
+    }
+    
+    .error {
+      background-color: #e6f2ff;
+      color: #0066cc;
+      border: 1px solid #b0c4de;
+    }
+    
+    .exito {
+      background-color: #e6ffe6;
+      color: #006400;
+      border: 1px solid #90ee90;
+    }
+  </style>
+</head>
+<body>
+  <div id="login">
+    <h2>Iniciar Sesión</h2>
+    <form id="form-login">
+      <label for="usuario">Usuario:</label>
+      <input type="text" id="usuario" name="usuario" required />
+
+      <label for="clave">Contraseña:</label>
+      <input type="password" id="clave" name="clave" required />
+
+      <button type="submit">Ingresar</button>
+    </form>
+    <div id="mensaje"></div>
+  </div>
+
+  <script>
+    document.getElementById('form-login').addEventListener('submit', function(event) {
+      event.preventDefault();
+      
+      const usuario = document.getElementById('usuario').value;
+      const clave = document.getElementById('clave').value;
+      const mensaje = document.getElementById('mensaje');
+      
+      const USUARIO_VALIDO = 'umg';
+      const CLAVE_VALIDA = 'admin';
+      
+      if (usuario === USUARIO_VALIDO && clave === CLAVE_VALIDA) {
+        mensaje.textContent = 'Login exitoso! Redirigiendo...';
+        mensaje.className = 'exito';
+        
+        setTimeout(function() {
+          window.location.href = 'demo.html';
+        }, 1000);
+      } else {
+        mensaje.textContent = 'Usuario o contraseña incorrectos';
+        mensaje.className = 'error';
+      }
+    });
+  </script>
+</body>
+</html>
